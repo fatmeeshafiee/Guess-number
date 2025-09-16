@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Number Guess</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <style>
+        #title{
+            color: rgb(56, 40, 87);
+        }
+        body {
+            margin: 10px;
+            background-color: #cccccc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button {
+            background-image: linear-gradient(to right, #1D2B64 0%, #F8CDDA  51%, #1D2B64  100%);
+            margin-top: 10px;
+            border-radius: 10px;
+            border-color: #7e38ae;
+            border-style: solid;
+            border-width: 1px;
+            width: 14%;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            color: #000000;
+            background-color: #caffff;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;          
+            border-radius: 10px;
+            
+        }
+        .button:hover{
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #historyArea {
+            margin-top: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        #game {
+            background-color: #8d8db6;
+            border-radius: 10px;
+            border-style: solid;
+            border-width: 3px;
+            background: #7F7FD5;  
+            background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  
+            background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); 
+            padding: 10px;
+            position: relative;
+            top: 6rem;
+        }
+
+        #statusArea {
+            font-size: 120%;
+        }
+        #footerArea {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 90%;
+            font-style: italic;
+        }
+        #userGuess {
+            background: aliceblue;
+            background-color: #8086d8;
+            border: none;
+            height: 2rem;
+            text-align: center;
+            box-shadow: 0px 4px #0f2e4945;
+            border-radius: 1rem;
+            width: 13rem;
+            font-size: 1.2rem;
+}
+       
+    </style>
+</head>
+
+<body>
+    <div id="game" >
+        
+        <h1 id="title">Number Guessing Game</h1>
+        <div id="statusArea">
+            <p>Enter a number between 1-100 and click the button...</p>
+        </div>
+        <input type="number" id="userGuess" />
+        <button id="buttonArea" class="button" >
+            Guess
+        </button>
+        <div id="historyArea">
+            <h2 class="test" id="test">Your Previous Guesses</h2>
+            <ol id="historyList">
+            </ol>
+        </div>
+    </div>
+
+    <script >
+    let random1=parseInt(Math.random()*100+1)
+    console.log(random1);
+      document.querySelector("#buttonArea").addEventListener("click",function()
+      {
+                let test=document.getElementById("test")
+                let game=document.getElementById("game")
+
+                
+                let userGusess=Number(document.querySelector("#userGuess").value)
+                if(1<=userGusess && userGusess<=100)
+                { 
+                  if(userGusess===random1){
+                      test.innerHTML="You win Goooood job"
+                      game.style.background="#7F7FD5"
+                      document.querySelector("#userGuess").disabled=true
+                  }
+                  else if (userGusess>random1) {
+                      test.innerHTML="Its too big try again"
+                  }
+                  else if (userGusess<random1) {
+                      test.innerHTML="Its too short try again"
+                  }
+                  else{
+                      test.innerHTML="Try agine"
+                  }
+                }
+                else{
+                     test.innerHTML="please enter number between 1-100"
+                     game.style.background="#c33c3c"
+                }
+
+    })
+    </script>
+</body>
+
+</html>
